@@ -3,21 +3,13 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
-  <title>Your Address Book</title>
+  <title>New Hangman Game</title>
 </head>
 <body>
   <div class="container">
-    <h1>Your Address Book</h1>
-    <div class="row">
-    {% for contact in contacts %}
-      <div class="col-md-3 box">
-        <p><strong>Name:</strong> {{ contact.getName }}</p>
-        <p><strong>Phone:</strong> {{ contact.getPhone }}</p>
-        <p><strong>Address:</strong> {{ contact.getAddress }}</p>
-      </div>
-    {% endfor %}
-    </div>
+    <h1>New Game of Hangman</h1>
   </div>
+  
   <form class="center" action="/create_contact" method="post">
     <div class="row">
       <div class="form-group col-lg-4">

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>New Hangman Game</title>
+</head>
+<body>
+  <div class="container">
+    <h1>New Game of Hangman for {{ game.getPlayer }}</h1>
+  </div>
+  <p> Temp dump of correct word: {{ game.getWord }}</p>
+  {% for i in 1..game.getWord|length %}
+    <span> _ </span>
+  {% endfor %}
+</body>
+</html>

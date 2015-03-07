@@ -18,8 +18,14 @@
     {% endfor %}
     </div>
   </div>
-  <form class="center" action="/newGame">
-    <button type="submit" class="btn-danger">New Game</button>
+  <form class="center" action="/hangman" method="post">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="name">Enter name:</label>
+        <input id="name" name="name" type="text" maxlength="20" required>
+      </div>
+    </div>
+    <button type="submit" class="btn-primary">New Game</button>
   </form>
   <form class="center" action="/delete_games">
     <button type="submit" class="btn-danger">Delete All Contacts</button>

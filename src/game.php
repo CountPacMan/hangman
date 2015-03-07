@@ -1,13 +1,16 @@
 <?php
+  require_once __DIR__."/../src/hangmanDictionary.php";
+  
   class Game {
     private $player;
     private $word;
     private $guess_wrong;
     private $guess_total;
 
-    function __construct($player, $word, $guess_wrong = 0, $guess_total = 0) {
-      $this->player = player;
-      $this->word = word;
+    function __construct($player, $guess_wrong = 0, $guess_total = 0) {
+      $this->player = $player;
+      $wordSelector = new hangmanDictionary();
+      $this->word = $wordSelector->getWord();
       $this->guess_wrong = $guess_wrong;
       $this->guess_total = $guess_total;
     }

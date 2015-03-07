@@ -19,16 +19,15 @@
     $test2->save();
     return $app['twig']->render('home.twig', array('games' => Game::getAll()));
   });
-
-  $app->post("/create_contact", function() use ($app) {
-    $new_contact = new Contact($_POST['name'], $_POST['phone'], $_POST['address']);
-    $new_contact->save();
-    return $app['twig']->render('created.twig', array('contact' => $_POST));
+  
+  $app->get("/delete_games", function() use ($app) {
+    Game::deleteAll();
+    return $app['twig']->render('home.twig', array('games' => Game::getAll()));
   });
-
-  $app->get("/delete_contacts", function() use ($app) {
-    Contact::deleteAll();
-    return $app['twig']->render('deleted.twig');
+  
+  $app->post("/hangman", function() use ($app) {
+    $newGame = new Game($_POST['name']);
+    return $app['twig']->render('hangman.twig', array('game' => $newGame));
   });
 
   return $app;
