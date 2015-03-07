@@ -1,8 +1,9 @@
 # Hangman for Epicodus
 ## by Daniel Toader
-### Date: March 06, 2015
+### Date: March 07, 2015
 #### Description
-Address Book is a simple contact store that uses session variables to store the contacts added by the user. The user can add, view, and delete contacts.  
+Game of hangman. Computer randomly selects a word from a set list and the user 
+guesses the letters that make up the word. Six wrong guesses and it's game over.
 
 #### Setup instructions
 1. Clone this git repository
