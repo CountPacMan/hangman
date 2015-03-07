@@ -1,0 +1,16 @@
+body {
+  background-color: #C8CFF7;
+}
+
+.box {
+  border-style: solid;
+  border-width: small;
+  margin: 3px;
+  background-color: beige;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Your Address Book</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Address Book</h1>
+    <div class="row">
+    {% for contact in contacts %}
+      <div class="col-md-3 box">
+        <p><strong>Name:</strong> {{ contact.getName }}</p>
+        <p><strong>Phone:</strong> {{ contact.getPhone }}</p>
+        <p><strong>Address:</strong> {{ contact.getAddress }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <form class="center" action="/create_contact" method="post">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="name">Enter name:</label>
+        <input id="name" name="name" type="text" maxlength="20" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="phone">Enter phone:</label>
+        <input id="phone" name="phone" type="text" maxlength="20" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="address">Enter address:</label>
+        <textarea id="address" name="address" rows="4" cols="40" required ></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn-primary">Add New</button>
+  </form>
+  <p>
+    <form class="center" action="/delete_contacts">
+      <button type="submit" class="btn-danger">Delete All Contacts</button>
+    </form>
+  </p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Hangman</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Hangman Game History</h1>
+    <div class="row">
+    {% for game in games %}
+      <div class="col-md-3 box">
+        <p><strong>Player:</strong> {{ game.getPlayer }}</p>
+        <p><strong>Won?</strong> {{ game.getWinner ? "Yes" : "No" }}</p>
+        <p><strong>Total Guesses:</strong> {{ game.getTotalGuess }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <form class="center" action="/newGame">
+    <button type="submit" class="btn-danger">New Game</button>
+  </form>
+  <form class="center" action="/delete_games">
+    <button type="submit" class="btn-danger">Delete All Contacts</button>
+  </form>
+  </p>
+</body>
+</html>
