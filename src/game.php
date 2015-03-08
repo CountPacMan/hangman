@@ -4,6 +4,7 @@
   class Game {
     private $player;
     private $word;
+    private $word_left;
     private $guess_wrong;
     private $guess_total;
 
@@ -11,6 +12,7 @@
       $this->player = $player;
       $wordSelector = new hangmanDictionary();
       $this->word = $wordSelector->getWord();
+      $this->word_left = $this->word;
       $this->guess_wrong = $guess_wrong;
       $this->guess_total = $guess_total;
     }
@@ -20,6 +22,10 @@
       return $this->word;
     }
 
+    function getWordLeft() {
+      return $this->word_left;
+    }
+    
     function getWrongGuess() {
       return $this->guess_wrong;
     }
@@ -32,8 +38,13 @@
       return $this->player;
     }
     
-    function getWinner() {
-      return $this->guess_wrong < 6;
+    function getLoser() {
+      return $this->guess_wrong > 6;
+    }
+    
+    // setters
+    function setWordLeft($word) {
+      $this->word_left = $word;
     }
 
     // increasers  
@@ -49,13 +60,23 @@
     function save() {
       array_push($_SESSION['games'], $this);
     }
+    
+    // save this particular game
+    function saveThisGame() {
+      array_push($_SESSION['thisGame'], $this);
+    }
+    
+    // get this particual game
+    function getThisGame() {
+      return $_SESSION['thisGame'];
+    }
 
-    // get existing contancts
+    // get saved games
     static function getAll() {
       return $_SESSION['games'];
     }
-
-    // delete existing contacts
+    
+    // delete saved games
     static function deleteAll() {
       $_SESSION['games'] = [];
     }

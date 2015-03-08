@@ -13,5 +13,15 @@
   {% for i in 1..game.getWord|length %}
     <span> _ </span>
   {% endfor %}
+  <form class="center" action="/hangmanInGame" method="post">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="guess">Enter guess:</label>
+        <input id="guess" name="guess" type="text" maxlength="1" required>
+      </div>
+    </div>
+    <button type="submit" class="btn-primary">Enter</button>
+  </form>
+  
 </body>
 </html>
