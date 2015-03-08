@@ -67,7 +67,7 @@
     }
     
     // get this particual game
-    function getThisGame() {
+    static function getThisGame() {
       return $_SESSION['thisGame'];
     }
 

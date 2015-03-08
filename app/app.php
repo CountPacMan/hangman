@@ -41,8 +41,8 @@
     $thisGame = Game::getThisGame()[0];
     $wordLeft = $thisGame->getWordLeft();
     echo "<p>guess: " . $guess . "</p>";
-    
-    if (stripos($wordLeft, $guess) >= 0) {
+    echo "<p>stripos: " . stripos($wordLeft, $guess) . "</p>";
+    if (stripos($wordLeft, $guess) > -1) {
       // strip letter from word_left
       $wordLeft = str_replace($guess, "", $wordLeft);
       $thisGame->setWordLeft($wordLeft);
@@ -51,14 +51,17 @@
       echo "<p> total guess: " . $thisGame->getTotalGuess() . "</p>";
       if (strlen($wordLeft) == 0) {
         $thisGame->saveThisGame();
+        $thisGame->save();
         return $app['twig']->render('winner.twig', array('game' => $thisGame));
       }
     } else {
       $thisGame->totalGuess();
       $thisGame->wrongGuess();
       $wrong = true;
+      echo "wrong guess!";
       if ($thisGame->getLoser()) {
         $thisGame->saveThisGame();
+        $thisGame->save();
         return $app['twig']->render('loser.twig', array('game' => $thisGame));
       }
     }

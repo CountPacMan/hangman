@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Hangman Current Game</title>
+</head>
+<body>
+  <div class="container">
+    <h1>A winner is you!</h1>
+  </div>
+  <p> Temp dump of correct word: {{ game.getWord }}</p>
+  <p> Temp dump of word left: {{ game.getWordLeft }}</p>  
+  <form class="center" action="/">
+    <button type="submit" class="btn-danger">Start New Game</button>
+  </form>
+</body>
+</html>
