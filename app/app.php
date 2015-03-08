@@ -31,21 +31,24 @@
   
   $app->post("/hangman", function() use ($app) {
     $newGame = new Game($_POST['name']);
+    $newGame->saveThisGame();
     return $app['twig']->render('hangman.twig', array('game' => $newGame));
   });
   
   $app->post("/hangmanInGame", function() use ($app) {
     $wrong = false;
     $guess = $_POST['guess'];
-    $thisGame = Game::getThisGame();
+    $thisGame = Game::getThisGame()[0];
     $wordLeft = $thisGame->getWordLeft();
-    
+    echo "<p>guess: " . $guess . "</p>";
     
     if (stripos($wordLeft, $guess) >= 0) {
       // strip letter from word_left
-      str_replace($guess, "", $wordLeft);
+      $wordLeft = str_replace($guess, "", $wordLeft);
       $thisGame->setWordLeft($wordLeft);
-      $thisGame->totalGuess();
+      $thisGame->totalGuess();      
+      echo "<p> word left: " . $wordLeft . "</p>";
+      echo "<p> total guess: " . $thisGame->getTotalGuess() . "</p>";
       if (strlen($wordLeft) == 0) {
         $thisGame->saveThisGame();
         return $app['twig']->render('winner.twig', array('game' => $thisGame));

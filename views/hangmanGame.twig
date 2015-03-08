@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Hangman Current Game</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Current Game of Hangman for {{ game.getPlayer }}</h1>
+  </div>
+  <p> Temp dump of correct word: {{ game.getWord }}</p>
+  <p> Temp dump of word left: {{ game.getWordLeft }}</p>
+  {% for i in 1..game.getWord|length %}
+    <span> _ </span>
+  {% endfor %}
+  <form class="center" action="/hangmanInGame" method="post">
+    <div class="row">
+      <div class="form-group col-lg-4">
+        <label for="guess">Enter guess:</label>
+        <input id="guess" name="guess" type="text" maxlength="1" required>
+      </div>
+    </div>
+    <button type="submit" class="btn-primary">Enter</button>
+  </form>
+  
+</body>
+</html>
