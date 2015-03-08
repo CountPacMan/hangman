@@ -37,16 +37,23 @@
   
   $app->post("/hangmanInGame", function() use ($app) {
     $wrong = false;
+    $letterPlayed = false;
     $guess = $_POST['guess'];
     $thisGame = Game::getThisGame()[0];
     $wordLeft = $thisGame->getWordLeft();
     echo "<p>guess: " . $guess . "</p>";
     echo "<p>stripos: " . stripos($wordLeft, $guess) . "</p>";
-    if (stripos($wordLeft, $guess) > -1) {
+    if (strstr($thisGame->getLetters(), $guess)) {
+      $letterPlayed = true;
+      echo "<p> letterplayed is true </p>";
+    }
+    elseif (strstr($wordLeft, $guess) > -1) {
       // strip letter from word_left
       $wordLeft = str_replace($guess, "", $wordLeft);
       $thisGame->setWordLeft($wordLeft);
-      $thisGame->totalGuess();      
+      $thisGame->totalGuess();
+      $thisGame->setLetters($guess);
+      $goodGuess = $guess;
       echo "<p> word left: " . $wordLeft . "</p>";
       echo "<p> total guess: " . $thisGame->getTotalGuess() . "</p>";
       if (strlen($wordLeft) == 0) {
@@ -57,6 +64,7 @@
     } else {
       $thisGame->totalGuess();
       $thisGame->wrongGuess();
+      $thisGame->setLetters($guess);
       $wrong = true;
       echo "wrong guess!";
       if ($thisGame->getLoser()) {
@@ -66,7 +74,7 @@
       }
     }
     $thisGame->saveThisGame();
-    return $app['twig']->render('hangmanGame.twig', array('game' => $thisGame, 'wrong' => $wrong));
+    return $app['twig']->render('hangmanGame.twig', array('game' => $thisGame, 'wrong' => $wrong, 'letterPlayed' => $letterPlayed, 'goodGuess' => $goodGuess, 'guess' => $guess));
   });
 
   return $app;

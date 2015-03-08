@@ -11,6 +11,13 @@
   </div>
   <p> Temp dump of correct word: {{ game.getWord }}</p>
   <p> Temp dump of word left: {{ game.getWordLeft }}</p>
+  <p> Temp dump of letters played: {{ game.getLetters }}</p>
+  {% if wrong %}
+    <p> Your guess of {{ guess }} was wrong. The noose tightens... </p>
+  {% endif %}
+  {% if letterPlayed %}
+    <p> You played {{ guess }} already. Try another letter. </p>
+  {% endif %}
   {% for i in 1..game.getWord|length %}
     <span> _ </span>
   {% endfor %}

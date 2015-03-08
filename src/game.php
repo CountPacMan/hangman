@@ -7,6 +7,7 @@
     private $word_left;
     private $guess_wrong;
     private $guess_total;
+    private $letters;
 
     function __construct($player, $guess_wrong = 0, $guess_total = 0) {
       $this->player = $player;
@@ -15,6 +16,7 @@
       $this->word_left = $this->word;
       $this->guess_wrong = $guess_wrong;
       $this->guess_total = $guess_total;
+      $this->letters = "";
     }
 
     // getters
@@ -42,9 +44,17 @@
       return $this->guess_wrong > 6;
     }
     
+    function getLetters() {
+      return $this->letters;
+    }    
+    
     // setters
     function setWordLeft($word) {
       $this->word_left = $word;
+    }
+    
+    function setLetters($letter) {
+      $this->letters .= $letter;
     }
 
     // increasers  
