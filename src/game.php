@@ -8,12 +8,17 @@
     private $guess_wrong;
     private $guess_total;
     private $letters;
+    private $output_word;
 
     function __construct($player, $guess_wrong = 0, $guess_total = 0) {
       $this->player = $player;
       $wordSelector = new hangmanDictionary();
       $this->word = $wordSelector->getWord();
       $this->word_left = $this->word;
+      $this->output_word = str_split($this->word);
+      for ($i = 0; $i < count($this->output_word); $i++) {
+        $this->output_word[$i] = "_";
+      }
       $this->guess_wrong = $guess_wrong;
       $this->guess_total = $guess_total;
       $this->letters = "";
@@ -26,6 +31,10 @@
 
     function getWordLeft() {
       return $this->word_left;
+    }
+    
+    function getOutputWord() {
+      return $this->output_word;
     }
     
     function getWrongGuess() {
@@ -41,7 +50,7 @@
     }
     
     function getLoser() {
-      return $this->guess_wrong > 6;
+      return ($this->guess_wrong > 6);
     }
     
     function getLetters() {
@@ -51,6 +60,10 @@
     // setters
     function setWordLeft($word) {
       $this->word_left = $word;
+    }
+    
+    function setOutputWord($word) {
+      $this->output_word = $word;
     }
     
     function setLetters($letter) {

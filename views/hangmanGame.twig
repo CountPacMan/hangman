@@ -18,9 +18,7 @@
   {% if letterPlayed %}
     <p> You played {{ guess }} already. Try another letter. </p>
   {% endif %}
-  {% for i in 1..game.getWord|length %}
-    <span> _ </span>
-  {% endfor %}
+  <h3> {{ game.getOutputWord }} </h3>
   <form class="center" action="/hangmanInGame" method="post">
     <div class="row">
       <div class="form-group col-lg-4">
