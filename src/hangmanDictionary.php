@@ -13,6 +13,8 @@ class hangmanDictionary {
     $dictionary_length = count($this->dictionary);
     $randNum = rand(0, $dictionary_length);
     $this->word = $this->dictionary[$randNum];
+    // strip the trailing blank space or carriage return from the end of the word (due to dictionary)
+    $this->word = rtrim($this->word);
   }
 
   function getWord() {
