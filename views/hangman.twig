@@ -9,7 +9,6 @@
   <div class="container">
     <h1>New Game of Hangman for {{ game.getPlayer }}</h1>
   </div>
-  <p> Temp dump of correct word: {{ game.getWord }}</p>
   <h2> {% for char in game.getOutputWord %}
       {{ char }}
     {% endfor %}

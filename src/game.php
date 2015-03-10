@@ -61,9 +61,9 @@
     function setWordLeft($word) {
       $this->word_left = $word;
     }
-    
-    function setOutputWord($word) {
-      $this->output_word = $word;
+        
+    function setOutputWord($guess, $i) {
+      $this->output_word[$i] = $guess;
     }
     
     function setLetters($letter) {

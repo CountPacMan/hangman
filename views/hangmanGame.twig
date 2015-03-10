@@ -9,16 +9,16 @@
   <div class="container">
     <h1>Current Game of Hangman for {{ game.getPlayer }}</h1>
   </div>
-  <p> Temp dump of correct word: {{ game.getWord }}</p>
-  <p> Temp dump of word left: {{ game.getWordLeft }}</p>
-  <p> Temp dump of letters played: {{ game.getLetters }}</p>
   {% if wrong %}
     <p> Your guess of {{ guess }} was wrong. The noose tightens... </p>
   {% endif %}
   {% if letterPlayed %}
     <p> You played {{ guess }} already. Try another letter. </p>
   {% endif %}
-  <h3> {{ game.getOutputWord }} </h3>
+  <h2> {% for char in game.getOutputWord %}
+      {{ char }}
+    {% endfor %}
+  </h2>
   <form class="center" action="/hangmanInGame" method="post">
     <div class="row">
       <div class="form-group col-lg-4">

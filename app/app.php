@@ -16,10 +16,6 @@
   // display stats for games
   // start new game
   $app->get("/", function() use ($app) {
-    $test1 = new Game("Awesome Mans", 4, 10);
-    $test1->save();
-    $test2 = new Game("Biscuit Head", 9, 15);
-    $test2->save();
     $_SESSION['thisGame'] = [];
     return $app['twig']->render('home.twig', array('games' => Game::getAll()));
   });
@@ -32,7 +28,6 @@
   $app->post("/hangman", function() use ($app) {    
     $newGame = new Game($_POST['name']);
     $newGame->saveThisGame();
-    print_r($newGame->getOutputWord());
     return $app['twig']->render('hangman.twig', array('game' => $newGame));
   });
   
@@ -42,26 +37,23 @@
     $guess = $_POST['guess'];
     $thisGame = Game::getThisGame()[0];
     $wordLeft = $thisGame->getWordLeft();
-    echo "<p>guess: " . $guess . "</p>";
-    echo "<p>stripos: " . stripos($wordLeft, $guess) . "</p>";
+    
     if (strstr($thisGame->getLetters(), $guess)) {
       $letterPlayed = true;
-      echo "<p> letterplayed is true </p>";
     }
     elseif (strstr($wordLeft, $guess) > -1) {
       // strip letter from word_left
       $wordLeft = str_replace($guess, "", $wordLeft);
       $thisGame->setWordLeft($wordLeft);
       // replace underscore with letter in output_word
-//      for ($i = 0; i < $thisGame->getWord(); i++) {
-//        if ($)
-//      }
-      $thisGame->setOutputWord(str_replace($guess, "_", $thisGame->getWord));
+      for ($i = 0; $i < count($thisGame->getOutputWord()); $i++) {
+        if ($thisGame->getWord()[$i] == $guess) {
+          $thisGame->setOutputWord($guess, $i);
+        }
+      }
       $thisGame->totalGuess();
       $thisGame->setLetters($guess);
       $goodGuess = $guess;
-      echo "<p> word left: " . $wordLeft . "</p>";
-      echo "<p> total guess: " . $thisGame->getTotalGuess() . "</p>";
       if (strlen($wordLeft) == 0) {
         $thisGame->saveThisGame();
         $thisGame->save();
@@ -72,7 +64,6 @@
       $thisGame->wrongGuess();
       $thisGame->setLetters($guess);
       $wrong = true;
-      echo "wrong guess!";
       if ($thisGame->getLoser()) {
         $thisGame->saveThisGame();
         $thisGame->save();
