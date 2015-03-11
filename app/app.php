@@ -16,7 +16,7 @@
   // display stats for games
   // start new game
   $app->get("/", function() use ($app) {
-    echo count(file(__DIR__."/../src/words.txt"));  
+    echo "Dictionary size: " . count(file(__DIR__."/../src/words.txt")) . " words";  
     $_SESSION['thisGame'] = [];
     return $app['twig']->render('home.twig', array('games' => Game::getAll()));
   });

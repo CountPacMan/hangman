@@ -15,6 +15,7 @@
   {% if letterPlayed %}
     <p> You played {{ guess }} already. Try another letter. </p>
   {% endif %}
+    <img src="/img/hangman{{ game.getWrongGuess + 1 }}.jpg">  
   <h2> {% for char in game.getOutputWord %}
       {{ char }}
     {% endfor %}
