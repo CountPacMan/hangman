@@ -1,6 +1,6 @@
 # Hangman for Epicodus
 ## by Daniel Toader
-### Date: March 10, 2015
+### Date: March 10, 2015 (last update: April 26, 2015)
 #### Description
 Game of hangman. Computer randomly selects a word from a set list and the user
 guesses the letters that make up the word. Six wrong guesses and it's game over.
@@ -13,12 +13,13 @@ guesses the letters that make up the word. Six wrong guesses and it's game over.
 
 #### Copyright © 2015, Daniel Toader  
 
-#### License: [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE) 
+#### License: [MIT](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 
 #### Technologies used
 - HTML5
 - CSS3
 - Bootstrap ver 3.3.1
 - PHP (tested to run on PHP ver 5.6.6)
+- jQuery ver 2.1.3
 - Silex ver 1.2.3
 - Twig ver 1.18.0
