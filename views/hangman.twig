@@ -3,25 +3,27 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="/js/game.js"></script>
   <title>New Hangman Game</title>
 </head>
 <body>
   <div class="container">
     <h1>New Game of Hangman for {{ game.getPlayer }}</h1>
   </div>
-  <img src="/img/hangman1.jpg"> 
+  <img src="/img/hangman1.jpg">
   <h2> {% for char in game.getOutputWord %}
       {{ char }}
     {% endfor %}
-  </h2>  
+  </h2>
   <form class="center" action="/hangmanInGame" method="post">
     <div class="row">
       <div class="form-group col-lg-4">
         <label for="guess">Enter guess:</label>
-        <input id="guess" name="guess" type="text" maxlength="1" required>
+        <input id="guess" name="guess" type="text" maxlength="1" pattern="[A-Za-z]{1}" size="1" required>
       </div>
     </div>
     <button type="submit" class="btn-primary">Enter</button>
-  </form>  
+  </form>
 </body>
 </html>

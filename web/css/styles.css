@@ -1,9 +1,6 @@
-body {
-  background-color: #C8CFF7;
-}
-
 .box {
   border-style: solid;
+  border-radius: 25px;
   border-width: small;
   margin: 3px;
   background-color: beige;
